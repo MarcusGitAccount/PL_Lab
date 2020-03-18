@@ -1,0 +1,9 @@
+consult(path).
+notrace.
+trace.
+
+0 == 0.0  % false
+0 =:= 0.0 % true
+
+addFirst(X, L, R) :- R = [X | L].
+
