@@ -3,14 +3,14 @@
 member(X, [X | _]).
 member(X, [_ | T]) :- member(X, T).
 
-% append the second list at the end of the first one
-append([H | T], L, [H | Rez]) :- append(T, L, Rez).
-append([], L, R) :- R = L.
+% appends the second list at the end of the first one
+append1([H | T], L, [H | Rez]) :- append1(T, L, Rez).
+append1([], L, R) :- R = L.
 
 % deletes the first occurence of an element in the list
-delete(X, [X | T], T).
-delete(X, [H | T], [H | Rez]) :- delete(X, T, Rez).
-delete(_, [], []).
+delete1(X, [X | T], T).
+delete1(X, [H | T], [H | Rez]) :- delete1(X, T, Rez).
+delete1(_, [], []).
 
 % deletes all occurences  of an element in the list
 deleteAll(X, [X | T], R) :- deleteAll(X, T, R).
@@ -20,7 +20,10 @@ deleteAll(_, [], R) :- R = [].
 % Lab exercises
 
 % 1. appends 3 lists
-append3(A, B, C, R) :- append(A, B, R_ab), append(R_ab, C, R_abc), R = R_abc.
+append3(A, B, C, R) :- 
+  append1(A, B, R_ab), 
+  append1(R_ab, C, R_abc), 
+  R = R_abc.
 
 % 2. adds an element at the begining of the list
 addFirst(X, L, [X | L]).
